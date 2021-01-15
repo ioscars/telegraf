@@ -32,6 +32,11 @@ export declare class Composer<TContext extends TelegrafContext>
   use(...middlewares: ReadonlyArray<Middleware<TContext>>): this
 
   /**
+   * Registers a module.
+   */
+  configure(module: (this: this, bot: this) => void): this
+
+  /**
    * Registers middleware for provided update type.
    */
   on(
