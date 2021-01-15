@@ -10,6 +10,11 @@ class Composer {
     return this
   }
 
+  configure(fn) {
+    fn.call(this, this)
+    return this
+  }
+
   on (updateTypes, ...fns) {
     return this.use(Composer.mount(updateTypes, ...fns))
   }
