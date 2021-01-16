@@ -219,6 +219,23 @@ function answerToWebhook (response, payload = {}, options) {
     })
 }
 
+const PARSE_MODE_METHODS = [
+  'sendMessage',
+  'sendPhoto',
+  'sendVideo',
+  'sendAnimation',
+  'sendAudio',
+  'sendDocument',
+  'sendVoice',
+  'sendPoll',
+  'editMessageText',
+  'editMessageCaption',
+]
+
+function isParseModeMethod(method) {
+  return PARSE_MODE_METHODS.includes(method)
+}
+
 class ApiClient {
   constructor (token, options, webhookResponse) {
     this.token = token
@@ -246,6 +263,10 @@ class ApiClient {
     const payload = Object.keys(data)
       .filter((key) => typeof data[key] !== 'undefined' && data[key] !== null)
       .reduce((acc, key) => ({ ...acc, [key]: data[key] }), {})
+
+    if (isParseModeMethod(method) && options.parseMode && !payload.parse_mode) {
+      payload.parse_mode = options.parseMode
+    }
 
     if (options.webhookReply && response && !responseEnd && !WEBHOOK_BLACKLIST.includes(method)) {
       debug('Call via webhook', method, payload)
