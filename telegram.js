@@ -447,6 +447,18 @@ class Telegram extends ApiClient {
       ...extra
     })
   }
+
+  hooks(hooks) {
+    this.options.hooks = hooks
+  }
+
+  async callApi(method, data = {}) {
+    const { hooks } = this.options
+    if (hooks && Array.isArray(hooks.before)) {
+      data = await hooks.before.reduce(async (d, hook) => hook(method, await d), Promise.resolve(data))
+    }
+    return super.callApi(method, data)
+  }
 }
 
 module.exports = Telegram

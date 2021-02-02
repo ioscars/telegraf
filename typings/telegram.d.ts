@@ -758,4 +758,6 @@ export declare class Telegram extends ApiClient {
    * @returns True on success
    */
   setMyCommands(commands: tt.BotCommand[]): Promise<boolean>
+
+  hooks(hooks: {before: Array<(method: string, data: object) => Promise<object>>}): void
 }
