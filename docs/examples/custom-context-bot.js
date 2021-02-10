@@ -1,6 +1,6 @@
-const Telegraf = require('telegraf')
+const { Telegraf, Context } = require('telegraf')
 
-class CustomContext extends Telegraf.Context {
+class CustomContext extends Context {
   constructor (update, telegram, options) {
     console.log('Creating contexy for %j', update)
     super(update, telegram, options)

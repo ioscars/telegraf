@@ -1,6 +1,4 @@
-const Telegraf = require('telegraf')
-const Extra = require('telegraf/extra')
-const session = require('telegraf/session')
+const { Telegraf, Extra, session } = require('telegraf')
 const { reply, fork } = Telegraf
 
 const randomPhoto = 'https://picsum.photos/200/300/?random'

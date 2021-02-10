@@ -1,6 +1,4 @@
-const Telegraf = require('telegraf')
-const Extra = require('telegraf/extra')
-const Markup = require('telegraf/markup')
+const { Telegraf, Markup } = require('telegraf')
 
 const gameShortName = 'your-game'
 const gameUrl = 'https://your-game.tld'

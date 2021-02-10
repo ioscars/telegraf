@@ -1,4 +1,4 @@
-const { Telegraf, Extra, Markup } = require('../../telegraf')
+const { Telegraf, Extra, Markup } = require('telegraf')
 
 const keyboard = Markup.inlineKeyboard([
   Markup.urlButton('❤️', 'http://telegraf.js.org'),
